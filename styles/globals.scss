@@ -1,0 +1,301 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  max-width: 100%;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  /* This defines what 1rem is */
+  /* 1 rem = 10px; 10px/16px = 62.5% */
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Poppins, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans,
+    Droid Sans, Helvetica Neue, sans-serif;
+  font-size: 1.6rem;
+  color: black;
+  box-sizing: border-box;
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+  padding: 0;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.mainHeader {
+  font-size: 3.4rem !important;
+  font-weight: 600 !important;
+
+  @include respond(desktop-1300) {
+    font-size: 2.5rem !important;
+  }
+  @include respond(notebook-914) {
+    font-size: 2.4rem !important;
+  }
+  @include respond(notebook-768) {
+    font-size: 2rem !important;
+  }
+  @include respond(tablet-666) {
+    font-size: 1.8rem !important;
+  }
+  @include respond(phones-320) {
+    font-size: 1.6rem !important;
+  }
+}
+
+.mainHeader-light {
+  font-size: 3.6rem !important;
+}
+
+.primaryHeader {
+  font-size: 3rem !important;
+  font-weight: 300 !important;
+}
+
+.primaryHeader-bold {
+  font-size: 3rem !important;
+  font-weight: 600 !important;
+}
+
+.secondaryHeader {
+  font-size: 2.7rem !important;
+  font-weight: 300 !important;
+}
+
+.secondaryHeader-bold {
+  font-size: 2.7rem !important;
+  font-weight: 600 !important;
+
+  @include respond(notebook-974) {
+    font-size: 2.5rem !important;
+  }
+  @include respond(notebook-768) {
+    font-size: 2.3rem !important;
+  }
+  @include respond(tablet-480) {
+    font-size: 2rem !important;
+  }
+}
+
+.primaryText {
+  font-size: 2.3rem !important;
+
+  @include respond(desktop-1300) {
+    font-size: 2rem !important;
+  }
+  @include respond(laptop-1200) {
+    font-size: 1.8rem !important;
+  }
+  @include respond(notebook-914) {
+    font-size: 1.6rem !important;
+  }
+  @include respond(tablet-666) {
+    font-size: 1.4rem !important;
+  }
+  @include respond(tablet-480) {
+    font-size: 1.4rem !important;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  }
+  @include respond(phones-320) {
+    font-size: 1.2rem !important;
+  }
+}
+
+.primaryText-bold {
+  font-size: 2.3rem !important;
+  font-weight: 600 !important;
+
+  @include respond(desktop-1300) {
+    font-size: 2rem !important;
+  }
+  @include respond(tablet-666) {
+    font-size: 1.9rem !important;
+  }
+  @include respond(phones-420) {
+    font-size: 1.7rem !important;
+  }
+  @include respond(phones-320) {
+    font-size: 1.6rem !important;
+  }
+}
+
+.secondaryText {
+  font-size: 2rem !important;
+}
+
+.secondaryText-bold {
+  font-size: 2rem !important;
+  font-weight: 600 !important;
+}
+
+.tertiaryText {
+  font-size: 1.8rem !important;
+
+  @include respond(laptop-1200) {
+    font-size: 1.7rem !important;
+  }
+  @include respond(notebook-666) {
+    font-size: 1.6rem !important;
+  }
+}
+
+.tertiaryText-bold {
+  font-size: 1.8rem !important;
+  font-weight: 600 !important;
+
+  @include respond(laptop-1200) {
+    font-size: 1.7rem !important;
+  }
+  // @include respond(notebook-974) {
+  //   font-size: 1.6rem !important;
+  // }
+  @include respond(notebook-666) {
+    font-size: 1.5rem !important;
+  }
+}
+
+.mediumTertiaryText {
+  font-size: 1.7rem !important;
+
+
+  @include respond(laptop-1093) {
+    font-size: 1.6rem !important;
+  }
+  @include respond(tablet-666) {
+    font-size: 1.5rem !important;
+  }
+  @include respond(tablet-553) {
+    font-size: 1.4rem !important;
+  }
+}
+
+.mediumTertiaryText-bold {
+  font-size: 1.7rem !important;
+  font-weight: 600 !important;
+
+  @include respond(desktop-1300) {
+    font-size: 1.5rem !important;
+  }
+  @include respond(laptop-1093) {
+    font-size: 1.3rem !important;
+  }
+  @include respond(tablet-666) {
+    font-size: 1.2rem !important;
+  }
+}
+
+.small-text {
+  font-size: 1.6rem !important;
+
+  @include respond(laptop-1024) {
+    font-size: 1.5rem !important;
+  }
+  @include respond(notebook-867) {
+    font-size: 1.4rem !important;
+  }
+  @include respond(notebook-768) {
+    font-size: 1.3rem !important;
+  }
+}
+
+.small-text-bold {
+  font-size: 1.6rem !important;
+  font-weight: 600 !important;
+
+  @include respond(laptop-1024) {
+    font-size: 1.5rem !important;
+  }
+}
+
+.mediumSmallText {
+  font-size: 1.5rem !important;
+
+  @include respond(laptop-1024) {
+    font-size: 1.4rem !important;
+  }
+  @include respond(notebook-867) {
+    font-size: 1.3rem !important;
+  }
+  @include respond(tablet-666) {
+    font-size: 1.2rem !important;
+  }
+}
+
+.mediumSmallText-bold {
+  font-size: 1.5rem !important;
+  font-weight: 600 !important;
+
+  @include respond(laptop-1024) {
+    font-size: 1.4rem !important;
+  }
+  @include respond(notebook-867) {
+    font-size: 1.3rem !important;
+  }
+  @include respond(phones-420) {
+    font-size: 1.1rem !important;
+  }
+}
+
+.smaller-text {
+  font-size: 1.4rem !important;
+
+  @include respond(notebook-867) {
+    font-size: 1.3rem !important;
+  }
+  @include respond(tablet-480) {
+    font-size: 1.1rem !important;
+  }
+  @include respond(phones-420) {
+    font-size: 1rem !important;
+  }
+}
+
+.smaller-text-bold {
+  font-size: 1.4rem !important;
+  font-weight: 600 !important;
+
+  @include respond(notebook-867) {
+    font-size: 1.3rem !important;
+  }
+  @include respond(tablet-480) {
+    font-size: 1.2rem !important;
+  }
+  @include respond(phones-420) {
+    font-size: 1.1rem !important;
+  }
+}
+
+.verySmallText {
+  font-size: 1.3rem !important;
+
+  @include respond(laptop-1024) {
+    font-size: 1.2rem !important;
+  }
+  @include respond(phones-420) {
+    font-size: 1rem !important;
+  }
+}
+
+.verySmallText-bold {
+  font-size: 1.3rem !important;
+  font-weight: 600 !important;
+
+  @include respond(laptop-1024) {
+    font-size: 1.2rem !important;
+  }
+}
+
+.smallest-text {
+  font-size: 1rem !important;
+}
