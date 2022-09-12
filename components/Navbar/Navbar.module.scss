@@ -1,0 +1,53 @@
+.navbar {
+  display: grid;
+  position: fixed !important;
+  top: 0 !important;
+  grid-template-columns: max-content max-content;
+  justify-content: space-between;
+  align-items: center;
+  height: 8rem;
+  width: 100vw;
+  user-select: none;
+  z-index: 17;
+  background-color: #a892ee;
+  padding: 0 3rem;
+
+  @include respond(tablet-666) {
+    height: 7rem;
+    padding: 0 1.5rem;
+  }
+  @include respond(phones-420) {
+    padding: 0 .7rem;
+  }
+
+  & button {
+    font: inherit;
+    cursor: pointer;
+    padding: 1rem 1.5rem;
+    border: 1px solid #40005d;
+    background-color: #40005d;
+    color: white;
+    border-radius: 12px;
+
+    @include respond(tablet-666) {
+      padding: 1rem 1rem;
+    }
+  }
+}
+
+.clearFix {
+  height: 8rem;
+
+  @include respond(tablet-666) {
+    height: 7rem;
+  }
+}
+
+.box {
+  flex-shrink: 0;
+
+  & h2 {
+    color: white;
+    text-transform: capitalize;
+  }
+}
