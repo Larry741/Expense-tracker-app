@@ -1,0 +1,14 @@
+.chart {
+  padding: 1rem;
+  border-radius: 12px;
+  background-color: #f8dfff;
+  text-align: center;
+  display: grid;
+  // justify-content: space-around;
+  grid-template-columns: repeat(12, 1fr);
+  height: 13rem;
+
+  @include respond(phones-420) {
+    padding: 1rem .5rem;
+  }
+}
