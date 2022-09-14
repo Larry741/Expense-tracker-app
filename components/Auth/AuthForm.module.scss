@@ -1,0 +1,139 @@
+.auth {
+  width: 80rem;
+  z-index: 50;
+  padding: 3rem 0;
+  border-radius: 2rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #a892ee;
+  position: relative;
+  box-shadow: 0 1.5rem 4rem rgba($color-black, 0.2);
+
+  @include respond(notebook-867) {
+    width: 90vw;
+    padding: 3rem 2rem;
+  }
+  @include respond(tablet-589) {
+    width: 95vw;
+    padding: 2rem 1rem;
+  }
+}
+
+.form {
+  position: relative;
+  width: 48.5rem;
+}
+
+.auth h1 {
+  text-align: center;
+  color: white;
+  margin-bottom: 4rem;
+
+  @include respond(tablet-589) {
+    margin-bottom: 2rem;
+  }
+}
+
+.control {
+  margin: 1.5rem 0 2rem;
+  position: relative;
+
+  @include respond(tablet-589) {
+    margin: 1rem 0 1.5rem;
+  }
+}
+
+.control label {
+  color: $color-grey-dark;
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin-left: 3.5rem;
+  margin-top: 0.7rem;
+  display: block;
+  transition: all 0.3s;
+  position: absolute;
+  top: 16%;
+  opacity: 1;
+
+  @include respond(phones-420) {
+    margin-left: 2rem;
+  }
+}
+
+.control input {
+  font-size: 1.5rem;
+  font-family: inherit;
+  color: inherit;
+  padding: 1.5rem 2rem;
+  border-radius: 2px;
+  background-color: $color-white;
+  border: none;
+  border-bottom: 3px solid transparent;
+  width: 90%;
+  display: block;
+  transition: all 0.3s;
+  margin: 0 auto;
+
+  @include respond(phones-420) {
+    width: 95%;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.1);
+    border-color: 3px solid $color-secondary-dark;
+  }
+
+  &::placeholder {
+    opacity: 0;
+  }
+}
+
+.actions {
+  display: grid;
+  grid-template-rows: 5rem 5rem;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  gap: 1rem;
+}
+
+.actions button {
+  font: inherit;
+  cursor: pointer;
+  padding: 1rem 1.5rem;
+  border: 1px solid #40005d;
+  background-color: #40005d;
+  color: white;
+  border-radius: 12px;
+  margin-right: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.actions button:disabled {
+  cursor: not-allowed;
+  font: inherit;
+}
+
+.invalid input {
+  border-color: #b40e0e;
+  background-color: #fce7e7;
+}
+
+.invalid input:focus {
+  border-color: #ff8800;
+  background-color: #fbe8d2;
+}
+
+.error-text {
+  color: #b40e0e;
+  grid-column: 2 / span 2;
+  text-align: left;
+  position: absolute;
+}
+
+#label-focus {
+  top: -1.5rem;
+}
