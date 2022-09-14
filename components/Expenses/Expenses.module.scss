@@ -1,0 +1,27 @@
+.expenses {
+  padding: 1rem 2rem;
+  background-color: rgb(31, 31, 31);
+  margin: 2rem 0;
+  width: 100%;
+  min-height: 20rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+
+  @include respond(tablet-480) {
+    padding: 1rem 1.5rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .expenses {
+    padding: 1rem 1rem;
+  }
+}
+
+.expenses-list__fallback {
+  color: white;
+  text-align: center;
+}
