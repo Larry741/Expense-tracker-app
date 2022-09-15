@@ -1,0 +1,41 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+  transition: .3s;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0rem;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 30;
+  // animation: slide-down 300ms ease-out forwards;
+}
+
+// @media (min-width: 768px) {
+//   .modal {
+//     width: 40rem;
+//     left: calc(50% - 20rem);
+//   }
+// }
+
+// @keyframes slide-down {
+//   from {
+//     opacity: 0;
+//     transform: translateY(-3rem);
+//   }
+//   to {
+//     opacity: 1;
+//     transform: translateY(0);
+//   }
+// }
