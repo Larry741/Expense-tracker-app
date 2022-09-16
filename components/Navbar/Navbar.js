@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import classes from "./Navbar.module.scss";
-import Modal from "../UI/Modal";
+import Modal from "../UI/modal";
 import AuthForm from "../Auth/AuthForm";
 import { signOut, useSession } from "next-auth/react";
 
