@@ -3,7 +3,7 @@ import NewExpense from "../components/NewExpenses/NewExpense";
 import { useState } from "react";
 
 import styles from "../styles/home.module.scss";
-import Navbar from "../components/Navbar/Navbar";
+import Navbar from "../components/navbar/navbar";
 
 function Index() {
 
