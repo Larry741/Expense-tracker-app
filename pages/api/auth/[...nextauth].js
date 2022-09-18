@@ -23,10 +23,11 @@ export default NextAuth({
         try {
           user = await getUserByEmail(credentials.email);
         } catch (err) {
-          console.log(err.message);
           if (!user) {
-            throw new Error("Could not look up your details. please try again");
+            throw new Error("User not found");
           }
+          
+          throw new Error("Could not look up your details. please try again");
         }
 
         if (!user) {

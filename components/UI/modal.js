@@ -6,7 +6,15 @@ import style from "./modal.module.scss";
 
 const Overlay = (props) => {
   return (
-    <div onClick={props.closeModalHandler} className={style.overlay}></div>
+    <motion.div
+      transition={{ default: { duration: 0.4 } }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      id="modal"
+      onClick={props.closeModalHandler}
+      className={style.overlay}
+    ></motion.div>
   );
 };
 

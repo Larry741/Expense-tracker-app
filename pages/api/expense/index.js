@@ -16,8 +16,7 @@ export default async function handler(req, res) {
     }
     
     try {
-      const res = await postUserExpenseData(session.user.email, expenses);
-      console.log(res);
+      await postUserExpenseData(session.user.email, expenses);
     } catch {
       return res.status(500).json({
         error: "server Error! expense could not be saved",

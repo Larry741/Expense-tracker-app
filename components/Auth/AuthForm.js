@@ -1,26 +1,20 @@
 import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
-import { getExpenseDataAction } from "../store/expenseSlice";
 import { signIn } from "next-auth/react";
+import { motion } from "framer-motion";
 
 import useInput from "../hooks/use-input";
 
+import { getExpenseDataAction } from "../store/expenseSlice";
 import classes from "./AuthForm.module.scss";
 import { Loader } from "../UI/Loader";
 import { useDispatch } from "react-redux";
-// import Notification from "../notification/notification";
 
-let notificationTimeout;
-
-const AuthForm = ({ closeModalHandler }) => {
+const AuthForm = ({ closeModalHandler, showNot }) => {
   const nameLabelRef = useRef(null);
   const emailLabelRef = useRef(null);
   const passwordLabelRef = useRef(null);
-  const dispatch = useDispatch(getExpenseDataAction());
-  // const [showNotification, setShowNotification] = useState({
-  //   message: null,
-  //   successState: null,
-  // });
+  const dispatch = useDispatch(getExpenseDataAction())
   const [isLoading, setIsLoading] = useState(false);
 
   const [isLogin, setIsLogin] = useState(true);
@@ -54,7 +48,7 @@ const AuthForm = ({ closeModalHandler }) => {
 
   const signupHandler = async (event) => {
     event.preventDefault();
-    
+
     if (!signupFormIsValid) {
       return;
     }
@@ -86,38 +80,29 @@ const AuthForm = ({ closeModalHandler }) => {
 
       const res = await response.json();
 
-      // setShowNotification({
-      //   message: res.message,
-      //   successState: "success",
-      // });
-      // document.getElementById("navigation").scrollIntoView();
+      showNot({
+        message: res.message,
+        successState: "success",
+      });
       switchAuthModeHandler();
     } catch (err) {
-      // setShowNotification({
-      //   message: err.message,
-      //   successState: "error",
-      // });
+      showNot({
+        message: err.message,
+          successState: "error",
+      });
     }
-
-    // clearTimeout(notificationTimeout);
-    // notificationTimeout = setTimeout(() => {
-    //   setShowNotification({
-    //     message: null,
-    //     successState: null,
-    //   });
-    // }, 5000);
     setIsLoading(false);
   };
 
   const credentialsLoginHandler = async (event) => {
     event.preventDefault();
-    
+
     if (!loginFormIsValid) {
       return;
     }
     setIsLoading(true);
 
-    try {      
+    try {
       const result = await signIn("credentials", {
         callbackUrl: "/",
         redirect: false,
@@ -128,23 +113,14 @@ const AuthForm = ({ closeModalHandler }) => {
       if (result.error) {
         throw new Error(result.error);
       }
-      
+
       closeModalHandler();
       dispatch(getExpenseDataAction());
     } catch (err) {
-      // setShowNotification({
-      //   message: err.message,
-      //   successState: "error",
-      // });
-
-      // clearTimeout(notificationTimeout);
-      // notificationTimeout = setTimeout(() => {
-      //   setShowNotification({
-      //     message: null,
-      //     successState: null,
-      //   });
-      // }, 8000);
-      console.log(err);
+      showNot({
+        message: err.message,
+        successState: "error",
+      });
     }
     setIsLoading(false);
   };
@@ -172,111 +148,90 @@ const AuthForm = ({ closeModalHandler }) => {
     });
   };
 
-  // const closeNotification = () => {
-  //   clearTimeout(notificationTimeout);
-  //   setShowNotification({
-  //     message: null,
-  //     successState: null,
-  //   });
-  // };
-
-  const firstNavigationLink = {
-    link: isLogin ? " /auth" : "/auth?signup",
-    title: isLogin ? "Sign In" : "Create An Account",
-  };
-
   return (
-    <>
-      <section
-        transition={{ default: { duration: 0.4 } }}
-        initial={{ y: -70, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        exit={{ y: -100, opacity: 0 }}
-        className={classes.auth}
-      >
-        <form className={classes.form}>
-          <h1 className="secondaryText-bold">
-            {isLogin ? "LOGIN" : "SIGN UP"}
-          </h1>
-          {!isLogin && (
-            <div
-              className={`${classes.control} ${
-                nameIsInvalid && classes.invalid
-              }`}
-            >
-              <label htmlFor="name" ref={nameLabelRef}>
-                Full name
-              </label>
-              <input
-                onFocus={inputfocusHandler}
-                onChange={nameValueChangeHandler}
-                onBlur={nameInputBlurHandler}
-                type="text"
-                id="name"
-                value={enteredName}
-                placeholder="Full name"
-              />
-            </div>
-          )}
+    <motion.section
+      transition={{ default: { duration: 0.4 } }}
+      initial={{ y: -70, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      exit={{ y: -100, opacity: 0 }}
+      className={classes.auth}
+    >
+      <form className={classes.form}>
+        <h1 className="secondaryText-bold">{isLogin ? "LOGIN" : "SIGN UP"}</h1>
+        {!isLogin && (
           <div
-            className={`${classes.control} ${
-              emailIsInvalid && classes.invalid
-            }`}
+            className={`${classes.control} ${nameIsInvalid && classes.invalid}`}
           >
-            <label htmlFor="email" ref={emailLabelRef}>
-              E-Mail Address
+            <label htmlFor="name" ref={nameLabelRef}>
+              Full name
             </label>
             <input
               onFocus={inputfocusHandler}
-              onChange={emailValueChangeHandler}
-              onBlur={emailInputBlurHandler}
+              onChange={nameValueChangeHandler}
+              onBlur={nameInputBlurHandler}
               type="text"
-              id="email"
-              value={enteredEmail}
-              required
-              placeholder="E-Mail Address"
+              id="name"
+              value={enteredName}
+              placeholder="Full name"
             />
           </div>
-          <div
-            className={`${classes.control} ${
-              passwordIsInvalid && classes.invalid
-            }`}
+        )}
+        <div
+          className={`${classes.control} ${emailIsInvalid && classes.invalid}`}
+        >
+          <label htmlFor="email" ref={emailLabelRef}>
+            E-Mail Address
+          </label>
+          <input
+            onFocus={inputfocusHandler}
+            onChange={emailValueChangeHandler}
+            onBlur={emailInputBlurHandler}
+            type="text"
+            id="email"
+            value={enteredEmail}
+            required
+            placeholder="E-Mail Address"
+          />
+        </div>
+        <div
+          className={`${classes.control} ${
+            passwordIsInvalid && classes.invalid
+          }`}
+        >
+          <label htmlFor="password" ref={passwordLabelRef}>
+            Password
+          </label>
+          <input
+            onFocus={inputfocusHandler}
+            onChange={passwordValueChangeHandler}
+            onBlur={passwordInputBlurHandler}
+            minLength={7}
+            type="password"
+            id="password"
+            value={enteredPassword}
+            required
+            placeholder="Password"
+          />
+        </div>
+        <div className={`${classes.actions} small-text`}>
+          <button
+            className={classes.login}
+            disabled={isLoading}
+            onClick={isLogin ? credentialsLoginHandler : signupHandler}
           >
-            <label htmlFor="password" ref={passwordLabelRef}>
-              Password
-            </label>
-            <input
-              onFocus={inputfocusHandler}
-              onChange={passwordValueChangeHandler}
-              onBlur={passwordInputBlurHandler}
-              minLength={7}
-              type="password"
-              id="password"
-              value={enteredPassword}
-              required
-              placeholder="Password"
-            />
-          </div>
-          <div className={`${classes.actions} small-text`}>
-            <button
-              className={classes.login}
-              disabled={isLoading}
-              onClick={isLogin ? credentialsLoginHandler : signupHandler}
-            >
-              {isLoading ? <Loader /> : null}
-              {isLogin ? "Login" : "Create Account"}
-            </button>
-            <button
-              type="button"
-              className={classes.toggle}
-              onClick={switchAuthModeHandler}
-            >
-              {isLogin ? "Create new account" : "Login with existing account"}
-            </button>
-          </div>
-        </form>
-      </section>
-    </>
+            {isLoading ? <Loader /> : null}
+            {isLogin ? "Login" : "Create Account"}
+          </button>
+          <button
+            type="button"
+            className={classes.toggle}
+            onClick={switchAuthModeHandler}
+          >
+            {isLogin ? "Create new account" : "Login with existing account"}
+          </button>
+        </div>
+      </form>
+    </motion.section>
   );
 };
 

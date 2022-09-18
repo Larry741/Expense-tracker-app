@@ -35,7 +35,6 @@ export default async function handler(req, res) {
   try {
     await saveUser(user);
   } catch (err) {
-    console.log(err.message);
     if (err.code === 11000) {
       return res.status(409).json({ error: "Email already exists" });
     }

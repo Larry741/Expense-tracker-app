@@ -3,7 +3,8 @@ import { createSlice, current } from "@reduxjs/toolkit";
 const initialState = {
   expenses: [],
   expensesChanged: false,
-  expensesUpdated: false
+  expensesUpdated: false,
+  expenseUpdateStatus: {message: null, status: null}
 };
 
 const expenseSlice = createSlice({
@@ -21,39 +22,44 @@ const expenseSlice = createSlice({
     removeExpense(state, action) {
       
     },
-    clearExpense(state, action) {
-      
-    },
+    updateSendingExpenseAction(state, action) {
+      state.expenseUpdateStatus = {
+        message: action.payload.message,
+        status: action.payload
+      }
+    }
   },
 });
 
-export const sendExpenseAction = (expenseData) => {
-  return async (dispatch) => {
-    const sendExpenseData = async (data) => {
-      const response = await fetch("/api/expense", {
-        method: "PUT",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+// export const sendExpenseAction = (expenseData) => {
+//   return async (dispatch) => {
+//     const sendExpenseData = async (data) => {
+//       const response = await fetch("/api/expense", {
+//         method: "PUT",
+//         body: JSON.stringify(data),
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+//       });
       
-      const res = await response.json();
+//       const res = await response.json();
 
-      if (!response.ok) {
-        throw new Error(res.error);
-      }
+//       if (!response.ok) {
+//         throw new Error(res.error);
+//       }
 
-      console.log(res.message);
-    };
+//       return res
+//     };
 
-    try {
-      await sendExpenseData(expenseData);
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
-};
+//     try {
+//       await sendExpenseData(expenseData);
+
+      
+//     } catch (error) {
+//       console.log(error.message);
+//     }
+//   };
+// };
 
 export const getExpenseDataAction = () => {
   return async (dispatch) => {

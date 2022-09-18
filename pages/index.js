@@ -6,7 +6,6 @@ import styles from "../styles/home.module.scss";
 import Navbar from "../components/navbar/navbar";
 
 function Index() {
-
   return (
     <div className={styles.app}>
       <Navbar />
