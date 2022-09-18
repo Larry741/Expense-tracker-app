@@ -31,36 +31,6 @@ const expenseSlice = createSlice({
   },
 });
 
-// export const sendExpenseAction = (expenseData) => {
-//   return async (dispatch) => {
-//     const sendExpenseData = async (data) => {
-//       const response = await fetch("/api/expense", {
-//         method: "PUT",
-//         body: JSON.stringify(data),
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//       });
-      
-//       const res = await response.json();
-
-//       if (!response.ok) {
-//         throw new Error(res.error);
-//       }
-
-//       return res
-//     };
-
-//     try {
-//       await sendExpenseData(expenseData);
-
-      
-//     } catch (error) {
-//       console.log(error.message);
-//     }
-//   };
-// };
-
 export const getExpenseDataAction = () => {
   return async (dispatch) => {
     const fetchCartData = async () => {

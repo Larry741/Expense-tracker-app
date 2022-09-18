@@ -6,23 +6,11 @@ let onFirstLoad = true;
 
 const ExpenseProvider = ({children}) => {
   const dispatch = useDispatch();
-  // const expenses = useSelector((state) => state.expense.expenses);
-  // const expensesChanged = useSelector((state) => state.expense.expensesChanged);
 
   useEffect(() => {
     dispatch(getExpenseDataAction());
   }, [dispatch]);
 
-  // useEffect(() => {
-  //   if (onFirstLoad) {
-  //     onFirstLoad = false;
-  //     return;
-  //   }
-
-  //   if (expensesChanged) {
-  //     dispatch(sendExpenseAction(expenses));
-  //   }
-  // }, [expensesChanged, expenses, dispatch]);
 
   return <>{children}</>
 };
