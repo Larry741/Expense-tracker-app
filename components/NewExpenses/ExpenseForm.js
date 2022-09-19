@@ -36,11 +36,35 @@ const ExpenseForm = () => {
     event.preventDefault();
 
     if (!session) {
+      setShowNotification({
+        message: "You must be logged in to perform operation",
+        successState: "error",
+      });
+
+      clearTimeout(notificationTimeout);
+      notificationTimeout = setTimeout(() => {
+        setShowNotification({
+          message: null,
+          successState: null,
+        });
+      }, 6000);
       return;
     }
 
     if (enteredTitle.length === 0 || enteredAmount.length === 0 || enteredDate.length === 0 ) {
-      return alert('Invalid inputs!!!');
+      setShowNotification({
+        message: "Invalid inputs",
+        successState: "error",
+      });
+
+      clearTimeout(notificationTimeout);
+      notificationTimeout = setTimeout(() => {
+        setShowNotification({
+          message: null,
+          successState: null,
+        });
+      }, 6000);
+      return;
     }
     setIsLoading(true);
 
@@ -75,18 +99,19 @@ const ExpenseForm = () => {
 
       setShowNotification({
         message: "Expense added",
-        status: "success"
+        successState: "success",
       });
+
+      setEnteredTitle("");
+      setEnteredAmount("");
+      setEnteredDate("");
     } catch (error) {
       setShowNotification({
         message: "Your expense could not be added. Please try again",
-        status: "error",
+        successState: "error",
       });
     }
 
-    setEnteredTitle('');
-    setEnteredAmount(''); 
-    setEnteredDate('');
     setIsLoading(false);
     clearTimeout(notificationTimeout);
     notificationTimeout = setTimeout(() => {

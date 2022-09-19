@@ -3,11 +3,16 @@ import ExpenseItem from "./ExpenseItem";
 import styles from "./expensesList.module.scss";
 
 const ExpenseList = (props) => {
+  
+  const sortedExpenses = props.expenseList.sort((a, b) => {
+    return new Date(b.date).getTime() - new Date(a.date).getTime();
+  })
+
   const filteredArrayExpense =
     props.expenseList.length === 0 ? (
       <h2 className={styles["expenses-list__fallback"]}>No expense found</h2>
     ) : (
-      props.expenseList.map((expense) => (
+      sortedExpenses.map((expense) => (
         <ExpenseItem
           key={expense.subId}
           date={expense.date}
