@@ -9,8 +9,8 @@ function Index() {
   return (
     <div className={styles.app}>
       <Head>
-        <title>Keep track of your expenses</title>
-        <meta name="description" content="A portfolio web app built by kosi" />
+        <title>Manage your expenses</title>
+        <meta name="description" content="Keep track of your expenses visually" />
         <link rel="icon" href="/logo-black.png" />
       </Head>
       <Navbar />
