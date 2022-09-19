@@ -14,10 +14,10 @@
 
   @include respond(tablet-666) {
     height: 7rem;
-    padding: 0 1.5rem;
+    padding: 0 2rem;
   }
   @include respond(phones-420) {
-    padding: 0 .7rem;
+    // padding: 0 .7rem;
   }
 
   & button {

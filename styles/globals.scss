@@ -123,10 +123,10 @@ code {
     font-size: 1.9rem !important;
   }
   @include respond(phones-420) {
-    font-size: 1.7rem !important;
+    font-size: 1.5rem !important;
   }
   @include respond(phones-320) {
-    font-size: 1.6rem !important;
+    font-size: 1.3rem !important;
   }
 }
 
